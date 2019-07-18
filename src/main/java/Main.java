@@ -17,7 +17,7 @@ public class Main {
 
         sshd.setHost("127.0.0.1");
 
-        PasswordAuthenticator psswd = (username, password, session) -> true;
+        PasswordAuthenticator psswd = (username, password, session) -> true; //Password authenticator for SSH connection
         sshd.setPasswordAuthenticator(psswd);
         try {
             sshd.start();
