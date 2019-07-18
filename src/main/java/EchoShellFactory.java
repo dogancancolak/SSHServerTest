@@ -56,7 +56,7 @@ public class EchoShellFactory implements Factory<Command> {
             environment = env;
             thread = new Thread(this, "EchoShell");
             thread.start();
-            out.write((">").getBytes());
+            out.write(("Connection Initialized\n\r").getBytes()); //When connection established write this to clients shell
             out.flush();
         }
 
@@ -67,17 +67,20 @@ public class EchoShellFactory implements Factory<Command> {
         public void run() {
             BufferedReader r = new BufferedReader(new InputStreamReader(in));
             try {
-                    String s = r.readLine();
-                    System.out.println(s);
-                    if (s.equals("")) {
-                        out.write(("Command Not Found>").getBytes());
-                        out.flush();
-                    }
-                    else{
-                        out.write(("Reply=create{MainPhone=97143717341;Done=1;Profile=FIX_VMB_ELIFE;Reference=1;Group=1;Agency=MDS;}>").getBytes());
-                        out.flush();
-                    }
+                //Connection can be continous if while is on
+                //while(true) {
 
+                String s = r.readLine(); // Read clients shell then generate response for it below
+                System.out.println(s);
+                if (s.equals("")) {
+                    out.write(("Command Not Found\n\r").getBytes());
+                    out.flush();
+                } else {
+                    out.write(("Success!!\n\r").getBytes());
+                    out.flush();
+                }
+
+                //}
 
             } catch (Exception e) {
                 e.printStackTrace();
