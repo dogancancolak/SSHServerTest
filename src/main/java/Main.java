@@ -57,7 +57,7 @@ public class Main {
             System.out.println("--------------Port " + port + " is not available");
             s.close();
             ServerSocket tempSocket = new ServerSocket(0);
-            System.out.println("--------------Port " + port + " is automatically assigned");
+            System.out.println("--------------Port " + tempSocket.getLocalPort() + " is automatically assigned");
             return tempSocket.getLocalPort();
         } catch (IOException e) {
             System.out.println("--------------Port " + port + " is available");
