@@ -71,12 +71,11 @@ public class EchoShellFactory implements Factory<Command> {
                 //while(true) {
 
                 String s = r.readLine(); // Read clients shell then generate response for it below
-                System.out.println(s);
                 if (s.equals("")) {
                     out.write(("Command Not Found\n\r").getBytes());
                     out.flush();
                 } else {
-                    out.write(("Success!!\n\r").getBytes());
+                    out.write(("Command '" + s + "' Successfully taken!!\n\r").getBytes());
                     out.flush();
                 }
 
